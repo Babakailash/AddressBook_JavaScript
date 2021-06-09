@@ -208,7 +208,6 @@ function search_by_state(){
         console.log("Searched Contacts in United-State");
     }
 }
-//UC9-Use Map for Count by City & State
     function count_by_city() {
         let city_count = addressBook.map(ele => ele.city === 'New Delhi');
         let size_city = city_count.reduce((prev, curr) => prev + curr);
@@ -220,7 +219,7 @@ function search_by_state(){
         let size_state = state_count.reduce((prev, curr) => prev + curr);
         console.log("Number of Contacts in state Uttar Pradesh are : " + size_state);
     }
-    
+    //UC10-Sort by Contact City and state
     function sort_contacts(){
         console.log("Contacts after sorting alphabetically : ");
         console.log(addressBook.sort());
