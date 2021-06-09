@@ -208,6 +208,13 @@ function search_by_state(){
         console.log("Searched Contacts in United-State");
     }
 }
+//UC12-serch by Zip using filter
+function search_by_zip(){
+    let search = addressBook.filter(ele => ele.zip == 400031);
+    if (search != null) {
+        console.log("Searched Contacts in zip 400031");
+    }
+}
     function count_by_city() {
         let city_count = addressBook.map(ele => ele.city === 'New Delhi');
         let size_city = city_count.reduce((prev, curr) => prev + curr);
@@ -219,7 +226,7 @@ function search_by_state(){
         let size_state = state_count.reduce((prev, curr) => prev + curr);
         console.log("Number of Contacts in state Uttar Pradesh are : " + size_state);
     }
-//UC11-Alphabetically Search
+
     function sort_contacts(){
         console.log("Contacts after sorting alphabetically : ");
         console.log(addressBook.sort());
@@ -231,6 +238,7 @@ function search_by_state(){
         deleteContact();
         search_by_city();
         search_by_state();
+        search_by_zip();
         count_by_city();
         count_by_state();
         sort_contacts();
