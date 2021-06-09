@@ -152,16 +152,26 @@ try {
     addressBook.push(contact1);
     addressBook.push(contact2);
     addressBook.push(contact3);
+    console.log(addressBook);
 
-    if (addressBook.find(name => name.getfirstName == "Agyat")) {
-        addressBook.find(name => name.setfirstName = 'Gyat');
+    if (addressBook.find(name => name.firstName == "Agyat")) {
+        let id = addressBook.findIndex(name => name.firstName == "Agyat");
+        addressBook[id].setfirstName = "Gyat";
+        console.log("Contacts after Editing are : ");
+        console.log(addressBook);
     }
     else{
         console.log("This Contact is not available in the AddressBook");
+    }
+
+    if (addressBook.find(name => name.firstName == 'Gyat')) {
+        let id = addressBook.findIndex(name => name.firstName == 'Gyat');
+        addressBook.splice(id,1)
+        console.log("After deletion contacts available are : " );
+        console.log(addressBook);
+        console.log("Size after deletion is : " + addressBook.length);
     }
 }
 catch (e) {
     console.error(e);
 }
-
-console.log(addressBook);
