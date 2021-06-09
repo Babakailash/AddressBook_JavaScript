@@ -219,7 +219,7 @@ function search_by_state(){
         let size_state = state_count.reduce((prev, curr) => prev + curr);
         console.log("Number of Contacts in state Uttar Pradesh are : " + size_state);
     }
-    //UC10-Sort by Contact City and state
+//UC11-Alphabetically Search
     function sort_contacts(){
         console.log("Contacts after sorting alphabetically : ");
         console.log(addressBook.sort());
