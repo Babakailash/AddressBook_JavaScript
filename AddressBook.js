@@ -1,3 +1,9 @@
+var regex_for_name = new RegExp('[A-Z]{1}[a-z]{3,}');
+var regex_for_address = new RegExp('[A-Z]{1}[a-z]');
+var regex_for_zip = new RegExp('^[1-9]{1}[0-9]{2}[\\s]?[0-9]{3}$');
+var regex_for_phoneNumber = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
+var regex_for_email = new RegExp('^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$');
+
 class AddressBook {
     firstName;
     lastName;
@@ -9,54 +15,124 @@ class AddressBook {
     email;
 
     constructor (...params) {
-        let regex_for_name = new RegExp('[A-Z]{1}[a-z]{3,}');
-        let regex_for_address = new RegExp('[A-Z]{1}[a-z]');
-        let regex_for_zip = new RegExp('^[1-9]{1}[0-9]{2}[\\s]?[0-9]{3}$');
-        let regex_for_phoneNumber = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
-        let regex_for_email = new RegExp('^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$');
+        this.setfirstName = params[0];
+        this.setlastName = params[1];
+        this.setaddress = params[2];
+        this.setcity = params[3];
+        this.setstate = params[4];
+        this.setzip = params[5];
+        this.setphoneNumber = params[6];
+        this.setemail = params[7];
+    }
 
-        if(regex_for_name.test(params[0]) && regex_for_name.test(params[1])){
-            this.firstName = params[0];
-            this.lastName = params[1];
-        }
-        else{
-            throw "Invalid Name";
-        }
+    get getfirstName() {
+        return this.firstName;
+    }
 
-        if (regex_for_address.test(params[2]) && regex_for_address.test(params[3]) && regex_for_address.test(params[4])) {
-            this.address = params[2];
-            this.city = params[3];
-            this.state = params[4];
+    set setfirstName(firstName) {
+        if (regex_for_name.test(firstName)) {
+            this.firstName = firstName;
         }
-        else{
+        else {
+            throw "Invalid First Name";
+        }
+    }
+
+    get getlastName() {
+        return this.lastName;
+    }
+
+    set setlastName(lastName) {
+        if (regex_for_name.test(lastName)) {
+            this.lastName = lastName;
+        }
+        else {
+            throw "Invalid Last Name";
+        }
+    }
+
+    get getaddress() {
+        return this.address;
+    }
+
+    set setaddress(address) {
+        if (regex_for_address.test(address)) {
+            this.address = address;
+        }
+        else {
             throw "Invalid Address";
         }
+    }
+        
+    get getcity(){ 
+        return this.city; 
+    }
 
-        if (regex_for_zip.test(params[5])) {
-            this.zip = params[5];
+    set setcity(city){ 
+        if(regex_for_address.test(city)){
+            this.city = city;
         }
-        else {
-            throw "Invalid Zip Code";
+        else{
+            throw "Invalid City";
         }
+    }
 
-        if (regex_for_phoneNumber.test(params[6])) {
-            this.phoneNumber = params[6];            
-        }
-        else {
-            throw "Invalid Phone Number";
-        }
+    get getstate(){
+         return this.state;
+     }
 
-        if (regex_for_email.test(params[7])) {
-            this.email = params[7];
+    set setstate(state){
+        if(regex_for_address.test(state)){
+            this.state = state;
         }
-        else {
+        else{
+            throw "State is Incorrect";
+        }
+    }
+
+    get getzip(){ 
+        return this.zip; 
+    }
+
+    set setzip(zip){
+        if(regex_for_zip.test(zip)){
+            this.zip = zip;
+        }
+        else{
+            throw "Invalid Zip";
+        }
+    }
+
+    get getphoneNumber(){ 
+        return this.phoneNumber;
+     }
+
+    set setphoneNumber(phoneNumber){
+        if(regex_for_phoneNumber.test(phoneNumber)){
+            this.phoneNumber = phoneNumber;
+        }
+        else{
+            throw "Phone Number is Incorrect";
+        }
+    }
+
+    get getemail(){
+         return this.email;
+    }
+
+    set setemail(email){
+        if(regex_for_email.test(email)){
+            this.email = email;
+        }
+        else{
             throw "Invalid Email";
         }
     }
 
+        
     toString() {
-        return "First Name = " + this.firstName + 
-                " \nLast Name = " + this.lastName + 
+        return "FirstName = " + this.firstName + 
+                " \nLastName = " + this.lastName + 
                 " \nAddress = " + this.address + 
                 " \nCity = " + this.city + 
                 " \nState = " + this.state + 
@@ -66,16 +142,25 @@ class AddressBook {
     }
 
 }
-    let addressBook=[];
-try{
-let contact1 = new AddressBook("Kailashnath", "Vishwakarma", "East Delhi", "New Ashok Nagar", "New Delhi", 110096, 9205267464, "nathkailash2020@gmail.com");
-let contact2 = new AddressBook("Mountain", "King", "Faizabad", "Ayodhya", "Uttar Pradesh", 224001, 9794445197, "baba@gmail.com");
 
-addressBook.push(contact1);
-addressBook.push(contact2);
+let addressBook = [];
+try {
+    let contact1 = new AddressBook("Kailashnath", "Vishwakarma", "New Delhi", "Delhi", "New Delhi", 110096, 9205267464, "nathkailash2020@gmail.com");
+    let contact2 = new AddressBook("Mountain", "King", "Faizabad", "Ayodhya", "Uttar Pradesh", 224001, 9794445197, "baba@gmail.com");
+    let contact3 = new AddressBook("Agyat", "Singh", "Dream City", "Colambia", "United-State", 400031, 1234567890, "agyat@hotmail.com");
 
+    addressBook.push(contact1);
+    addressBook.push(contact2);
+    addressBook.push(contact3);
+
+    if (addressBook.find(name => name.getfirstName == "Agyat")) {
+        addressBook.find(name => name.setfirstName = 'Gyat');
+    }
+    else{
+        console.log("This Contact is not available in the AddressBook");
+    }
 }
-catch(e){
+catch (e) {
     console.error(e);
 }
 
