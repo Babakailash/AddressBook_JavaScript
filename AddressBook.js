@@ -66,10 +66,17 @@ class AddressBook {
     }
 
 }
+    let addressBook=[];
 try{
-let addressbook = new AddressBook("Kailashnath", "Vishwakarma", "East Delhi", "New Ashok Nagar", "New Delhi", 110096, 9205267464, "nathkailash2020@gmail.com");
-console.log(addressbook.toString());
+let contact1 = new AddressBook("Kailashnath", "Vishwakarma", "East Delhi", "New Ashok Nagar", "New Delhi", 110096, 9205267464, "nathkailash2020@gmail.com");
+let contact2 = new AddressBook("Mountain", "King", "Faizabad", "Ayodhya", "Uttar Pradesh", 224001, 9794445197, "baba@gmail.com");
+
+addressBook.push(contact1);
+addressBook.push(contact2);
+
 }
 catch(e){
     console.error(e);
 }
+
+console.log(addressBook);
