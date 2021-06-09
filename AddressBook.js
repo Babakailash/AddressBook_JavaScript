@@ -154,7 +154,7 @@ let addressBook = [];
     addressBook.push(contact2);
     addressBook.push(contact3);
     console.log(addressBook);
-//UC7-Duplicate
+
 function addContact() {
     let contact = new AddressBook("Ravindra", "Nishad", "Naipura", "Ayodhya", "Uttar Pradesh", 224001, 8080808080, "ravindra@gmail.com");
     let contact_check = addressBook.map(name => name.getfirstName === contact.getfirstName);
@@ -194,7 +194,23 @@ function count() {
     let size = contact_count.reduce((previous, current) => previous + current);
     return size;
 }
+//UC8-Search by city & State
+function search_by_city(){
+    let search = addressBook.filter(ele => ele.city == 'Ayodhya');
+    if (search != null){
+        console.log("Searched Contacts in Ayodhya");
+    }
+}
+
+function search_by_state(){
+    let search = addressBook.filter(ele => ele.state == 'United-State');
+    if (search != null) {
+        console.log("Searched Contacts in United-State");
+    }
+}
 
 addContact();
 editContact();
 deleteContact();
+search_by_city();
+search_by_state();
