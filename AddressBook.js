@@ -1,10 +1,10 @@
-//UC2-Validation
+
 var regex_for_name = new RegExp('[A-Z]{1}[a-z]{3,}');
 var regex_for_address = new RegExp('[A-Z]{1}[a-z]');
 var regex_for_zip = new RegExp('^[1-9]{1}[0-9]{2}[\\s]?[0-9]{3}$');
 var regex_for_phoneNumber = new RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
 var regex_for_email = new RegExp('^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$');
-//UC1-addressbook
+
 class AddressBook {
     firstName;
     lastName;
@@ -143,9 +143,9 @@ class AddressBook {
     }
 
 }
-//UC3-Array
+
 let addressBook = [];
-try {
+
     let contact1 = new AddressBook("Kailashnath", "Vishwakarma", "New Delhi", "Delhi", "New Delhi", 110096, 9205267464, "nathkailash2020@gmail.com");
     let contact2 = new AddressBook("Mountain", "King", "Faizabad", "Ayodhya", "Uttar Pradesh", 224001, 9794445197, "baba@gmail.com");
     let contact3 = new AddressBook("Agyat", "Singh", "Dream City", "Colambia", "United-State", 400031, 1234567890, "agyat@hotmail.com");
@@ -154,7 +154,20 @@ try {
     addressBook.push(contact2);
     addressBook.push(contact3);
     console.log(addressBook);
-//UC4-Edit
+//UC7-Duplicate
+function addContact() {
+    let contact = new AddressBook("Ravindra", "Nishad", "Naipura", "Ayodhya", "Uttar Pradesh", 224001, 8080808080, "ravindra@gmail.com");
+    let contact_check = addressBook.map(name => name.getfirstName === contact.getfirstName);
+    if(contact_check.includes(true)) {
+        console.log("Contact already exists in AddressBook");
+    }
+    else{
+        addressBook.push(contact);
+    }
+    console.log(addressBook);
+}
+
+function editContact() {
     if (addressBook.find(name => name.firstName == "Agyat")) {
         let id = addressBook.findIndex(name => name.firstName == "Agyat");
         addressBook[id].setfirstName = "Gyat";
@@ -164,20 +177,24 @@ try {
     else{
         console.log("This Contact is not available in the AddressBook");
     }
-//UC5-Delete
+}
+
+function deleteContact() {
     if (addressBook.find(name => name.firstName == 'Gyat')) {
         let id = addressBook.findIndex(name => name.firstName == 'Gyat');
         addressBook.splice(id,1)
         console.log("After deletion contacts available are : " );
         console.log(addressBook);
-        console.log("Size after deletion is : " + addressBook.length);
-
-        //UC6-count
-        let contact_count = addressBook.map(ele => typeof ele.getfirstName === 'string');
-        let size = contact_count.reduce((previous, current) => previous + current);
-        console.log("Total Size  is now : " + size);
+        console.log("Size after deletion is : " + count());
     }
 }
-catch (e) {
-    console.error(e);
+
+function count() {
+    let contact_count = addressBook.map(ele => typeof ele.getfirstName === 'string');
+    let size = contact_count.reduce((previous, current) => previous + current);
+    return size;
 }
+
+addContact();
+editContact();
+deleteContact();
