@@ -194,7 +194,7 @@ function count() {
     let size = contact_count.reduce((previous, current) => previous + current);
     return size;
 }
-//UC8-Search by city & State
+
 function search_by_city(){
     let search = addressBook.filter(ele => ele.city == 'Ayodhya');
     if (search != null){
@@ -208,9 +208,33 @@ function search_by_state(){
         console.log("Searched Contacts in United-State");
     }
 }
-
-addContact();
-editContact();
-deleteContact();
-search_by_city();
-search_by_state();
+//UC9-Use Map for Count by City & State
+    function count_by_city() {
+        let city_count = addressBook.map(ele => ele.city === 'New Delhi');
+        let size_city = city_count.reduce((prev, curr) => prev + curr);
+        console.log("Number of Contacts in city New Delhi are : " + size_city);
+    }
+    
+    function count_by_state() {
+        let state_count = addressBook.map(ele => ele.state === 'Uttar Pradesh');
+        let size_state = state_count.reduce((prev, curr) => prev + curr);
+        console.log("Number of Contacts in state Uttar Pradesh are : " + size_state);
+    }
+    
+    function sort_contacts(){
+        console.log("Contacts after sorting alphabetically : ");
+        console.log(addressBook.sort());
+    }
+    
+    function run_addressbook(){
+        addContact();
+        editContact();
+        deleteContact();
+        search_by_city();
+        search_by_state();
+        count_by_city();
+        count_by_state();
+        sort_contacts();
+    }
+    
+    run_addressbook();
